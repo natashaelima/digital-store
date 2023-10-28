@@ -10,7 +10,7 @@ const Caroussel = () => {
     const [itemAtivo, setItemAtivo] = useState(0);
     const [banners, setBanners] = useState([]);
     const [isLoading, setIsLoanding] = useState(true);
-    const {data: productsData} = useProducts();
+    // const {data: productsData} = useProducts();
 
     const alteraIMG = (imagem) => {
         switch(imagem) {
@@ -70,7 +70,6 @@ async function buscarBanners(){
 
     useEffect(() => {
         buscarBanners();
-        console.log(productsData);
     }, []);
 
     return (
