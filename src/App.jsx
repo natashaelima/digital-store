@@ -5,6 +5,7 @@ import Ways from "./routes";
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import '../public/digital.css';
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const App = () => {
 
@@ -13,15 +14,18 @@ const App = () => {
     isLogged: false,
     level: 'admin'
   });
-  
 
+  const queryClient = new QueryClient();
+  
   return(
     <>
-      <AuthContext.Provider value={{userInfo, setUserInfo}}>
-        <PrimeReactProvider>
-          <Ways />
-        </PrimeReactProvider>
-      </AuthContext.Provider>
+      <QueryClientProvider client={queryClient}>
+        <AuthContext.Provider value={{userInfo, setUserInfo}}>
+          <PrimeReactProvider>
+            <Ways />
+          </PrimeReactProvider>
+        </AuthContext.Provider>
+      </QueryClientProvider>
     </>
   );
 }
